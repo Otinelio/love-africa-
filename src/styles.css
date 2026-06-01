@@ -1,0 +1,180 @@
+@import "tailwindcss" source(none);
+@import "tw-animate-css";
+
+@source "../src";
+
+@theme inline {
+  --color-yellow: var(--yellow);
+  --color-black: var(--black);
+  --color-off-white: var(--off-white);
+  --color-orange: var(--orange);
+  --color-red-accent: var(--red);
+  --color-gray-light: var(--gray-light);
+  --color-gray-text: var(--gray-text);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --font-display: "Syne", sans-serif;
+  --font-sans: "DM Sans", sans-serif;
+  --font-mono: "Space Grotesk", sans-serif;
+
+  --radius-lg: 1rem;
+  --radius-xl: 1.5rem;
+  --radius-2xl: 2rem;
+}
+
+:root {
+  --yellow: #f7e400;
+  --black: #111111;
+  --off-white: #f7f3ea;
+  --orange: #ff8a00;
+  --red: #d93a2f;
+  --gray-light: #e5e0d5;
+  --gray-text: #6b6560;
+
+  --background: #f7f3ea;
+  --foreground: #111111;
+  --card: #ffffff;
+  --card-foreground: #111111;
+  --popover: #ffffff;
+  --popover-foreground: #111111;
+  --primary: #f7e400;
+  --primary-foreground: #111111;
+  --secondary: #111111;
+  --secondary-foreground: #f7e400;
+  --muted: #e5e0d5;
+  --muted-foreground: #6b6560;
+  --accent: #ff8a00;
+  --accent-foreground: #ffffff;
+  --destructive: #d93a2f;
+  --destructive-foreground: #ffffff;
+  --border: #e5e0d5;
+  --input: #e5e0d5;
+  --ring: #f7e400;
+  --radius: 1rem;
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+  html,
+  body {
+    background-color: var(--off-white);
+    color: var(--black);
+    font-family: "DM Sans", sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: "Syne", sans-serif;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+  }
+  .font-display {
+    font-family: "Syne", sans-serif;
+  }
+  .font-mono-accent {
+    font-family: "Space Grotesk", sans-serif;
+  }
+}
+
+@layer utilities {
+  .text-shadow-glow {
+    text-shadow: 0 0 40px rgba(247, 228, 0, 0.4);
+  }
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+  .scrollbar-hide {
+    scrollbar-width: none;
+  }
+  .masonry-3 {
+    column-count: 3;
+    column-gap: 1rem;
+  }
+  .masonry-2 {
+    column-count: 2;
+    column-gap: 1rem;
+  }
+  .masonry-1 {
+    column-count: 1;
+  }
+  .masonry-3 > *,
+  .masonry-2 > *,
+  .masonry-1 > * {
+    break-inside: avoid;
+    margin-bottom: 1rem;
+  }
+  @media (max-width: 1024px) {
+    .masonry-3 {
+      column-count: 2;
+    }
+  }
+  @media (max-width: 640px) {
+    .masonry-3,
+    .masonry-2 {
+      column-count: 1;
+    }
+  }
+}
+
+@keyframes float-y {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+}
+.animate-float { animation: float-y 4s ease-in-out infinite; }
+
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.6; transform: scale(1.3); }
+}
+.pulse-dot { animation: pulse-dot 1.6s ease-in-out infinite; }
+
+@keyframes bounce-chev {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(10px); }
+}
+.bounce-chev { animation: bounce-chev 1.8s ease-in-out infinite; }
+
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+.animate-spin-slow {
+  animation: spin-slow 24s linear infinite;
+}
+
+@media print {
+  .no-print {
+    display: none !important;
+  }
+  .qr-print-area {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+  body {
+    background: white !important;
+  }
+}
